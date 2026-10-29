@@ -32,7 +32,12 @@ const ButtonComponent = styled.button`
 	}
 `
 
-const Button = ({ children, onClick, type, ...rest }: ButtonProps) => {
+const Button = ({
+	children,
+	onClick,
+	type = 'button',
+	...rest
+}: ButtonProps) => {
 	const handleOnClick = (event: MouseEvent) => {
 		onClick?.(event)
 	}
@@ -42,10 +47,6 @@ const Button = ({ children, onClick, type, ...rest }: ButtonProps) => {
 			{children}
 		</ButtonComponent>
 	)
-}
-
-Button.defaultProps = {
-	type: 'button',
 }
 
 export default Button

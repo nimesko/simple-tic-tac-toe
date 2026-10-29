@@ -10,7 +10,7 @@ import styled from 'styled-components'
 
 export interface DialogProps {
 	children: ReactNode
-	isVisible: boolean
+	isVisible?: boolean
 	title: string
 	onClose: () => void
 }
@@ -130,7 +130,12 @@ const OpenDialog = ({ children, title, onClose }: OpenDialogProps) => {
 	)
 }
 
-const Dialog = ({ onClose, children, isVisible, title }: DialogProps) => {
+const Dialog = ({
+	onClose,
+	children,
+	isVisible = false,
+	title,
+}: DialogProps) => {
 	useEffect(() => {
 		const onKeyUp = (event: globalThis.KeyboardEvent) => {
 			const value = event.key.trim()
@@ -154,10 +159,6 @@ const Dialog = ({ onClose, children, isVisible, title }: DialogProps) => {
 		</OpenDialog>,
 		modalRoot,
 	)
-}
-
-Dialog.defaultProps = {
-	isVisible: false,
 }
 
 export default Dialog

@@ -18,7 +18,8 @@ const generateProps = ({
 		players: new Array(playersLength).fill(0).map((_, index) => ({
 			id: `${index + 1}`,
 			name: faker.internet.username(),
-			score: faker.number.int(98),
+			// Scores are distinct (and the names never are numbers) so the texts can be told apart
+			score: index * 50 + faker.number.int(49),
 		})),
 		onClickChangeName: vi.fn(),
 	}
