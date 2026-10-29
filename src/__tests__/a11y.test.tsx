@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components'
 import { DarkTheme, LightTheme } from '@theme/theme'
 import HomePage from '../pages/home/home'
 import { scan } from './helpers/axe'
+import { stubCanvasContext } from './helpers/canvas'
 
 vi.mock('@services/sound', () => ({
 	default: { playMove: vi.fn(), playWin: vi.fn(), playTie: vi.fn() },
@@ -26,6 +27,14 @@ describe.each([
 	['light', LightTheme],
 ])('accessibility (%s theme)', (_, theme) => {
 	let modalRoot: HTMLDivElement
+
+	beforeAll(() => {
+		stubCanvasContext()
+	})
+
+	afterAll(() => {
+		vi.restoreAllMocks()
+	})
 
 	beforeEach(() => {
 		localStorage.clear()

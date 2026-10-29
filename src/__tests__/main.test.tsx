@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react'
+import { act, screen } from '@testing-library/react'
 import React from 'react'
 import reportWebVitals from '../report-web-vitals'
 
@@ -12,7 +12,9 @@ vi.mock('../report-web-vitals', () => ({
 
 const loadMain = async () => {
 	vi.resetModules()
-	await import('../main')
+	await act(async () => {
+		await import('../main')
+	})
 }
 
 describe('main', () => {
