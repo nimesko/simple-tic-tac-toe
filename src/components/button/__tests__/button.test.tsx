@@ -53,4 +53,14 @@ describe('Button', () => {
 
 		fireEvent.click(screen.getByText(props.children as string))
 	})
+
+	test('should be a plain button by default so it never submits a form', () => {
+		render(
+			<ThemeProvider theme={DarkTheme}>
+				<Button>Plain</Button>
+			</ThemeProvider>,
+		)
+
+		expect(screen.getByRole('button').getAttribute('type')).toBe('button')
+	})
 })

@@ -16,11 +16,15 @@ Github Actions was also used to automate issues such as deployment, code checkin
 
 ## Usage
 
-Node.js 22.12 or newer is required. Yarn 4 is required (the version is pinned in `package.json`; install it with `npm i -g @yarnpkg/cli-dist` or enable it via Corepack). Install the dependencies with `yarn`.
+Node.js 26 or newer is required (`.nvmrc` pins the version, `fnm use` or `nvm use` picks it up). Yarn 4 is required (the version is pinned in `package.json`; install it with `npm i -g @yarnpkg/cli-dist`, or with `npm i -g corepack`, which is no longer bundled with Node.js). Install the dependencies with `yarn`.
 
 Then, you can launch the dev server by executing `yarn start` (use `yarn build` to create a production build in `dist/` and `yarn preview` to serve it locally).
 
 And the last step is to check your browser at `http://localhost:8080/` to start making your changes :)
+
+## Deployment
+
+The site is published to GitHub Pages by the `Deploy to GitHub Pages` job of the CI workflow, after lint, format, accessibility, test and build pass on `main`. In the repository settings, **Settings > Pages > Build and deployment > Source** must be set to **GitHub Actions**.
 
 ## Contributing
 

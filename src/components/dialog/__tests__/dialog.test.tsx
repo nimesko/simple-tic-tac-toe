@@ -202,4 +202,16 @@ describe('Dialog', () => {
 			)
 		})
 	})
+
+	test('should be hidden by default', () => {
+		render(
+			<ThemeProvider theme={DarkTheme}>
+				<Dialog title="Hidden" onClose={vi.fn()}>
+					<div>Testing</div>
+				</Dialog>
+			</ThemeProvider>,
+		)
+
+		expect(screen.queryByRole('dialog')).toBeNull()
+	})
 })

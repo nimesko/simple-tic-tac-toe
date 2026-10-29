@@ -52,4 +52,14 @@ describe('Input', () => {
 		expect(screen.getByDisplayValue(value)).toBeTruthy()
 		expect(props.onChange).toHaveBeenCalled()
 	})
+
+	test('should start empty when no value is given', () => {
+		render(
+			<ThemeProvider theme={DarkTheme}>
+				<Input name="name" label="Name" onChange={vi.fn()} />
+			</ThemeProvider>,
+		)
+
+		expect((screen.getByLabelText('Name') as HTMLInputElement).value).toBe('')
+	})
 })

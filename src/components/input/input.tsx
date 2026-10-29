@@ -34,7 +34,7 @@ const Label = styled.label`
 	margin: 0 0 0.5rem;
 `
 
-const Input = ({ name, label, value, onChange, ...rest }: InputProps) => {
+const Input = ({ name, label, value = '', onChange, ...rest }: InputProps) => {
 	const [innerValue, setInnerValue] = useState(value)
 
 	const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -53,10 +53,6 @@ const Input = ({ name, label, value, onChange, ...rest }: InputProps) => {
 			/>
 		</Wrapper>
 	)
-}
-
-Input.defaultProps = {
-	value: '',
 }
 
 export default Input
