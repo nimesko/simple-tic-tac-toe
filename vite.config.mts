@@ -5,7 +5,7 @@ import { visualizer } from 'rollup-plugin-visualizer'
 const isAnalyzing = process.env.ANALYZE === 'true'
 
 export default defineConfig({
-	base: './',
+	base: process.env.NODE_ENV === 'production' ? '/simple-tic-tac-toe/' : './',
 	plugins: [react(), isAnalyzing && visualizer({ open: true, gzipSize: true })],
 	resolve: {
 		tsconfigPaths: true,
